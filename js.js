@@ -51,6 +51,33 @@ const sr = ScrollReveal({
 //     reset: true
 });
 
+const cursor = document.getElementById('cursor');
+
+document.addEventListener('mousemove', e => {
+  cursor.style.top = e.clientY + 'px';
+  cursor.style.left = e.clientX + 'px';
+});
+
+const hoverTargets = document.querySelectorAll('.hover-text');
+
+hoverTargets.forEach(target => {
+  target.addEventListener('mouseenter', () => {
+    cursor.style.width = '60px';
+    cursor.style.height = '60px';
+    cursor.style.background = 'rgba(0, 0, 0, 0.1)';
+  });
+
+  target.addEventListener('mouseleave', () => {
+    cursor.style.width = '30px';
+    cursor.style.height = '30px';
+    cursor.style.background = 'rgba(0, 0, 0, 0.2)';
+  });
+});
+
+
+
+
+
 sr.reveal('.home__data, .about__img, .skills__subtitle, .skills__text',{}); 
 sr.reveal('.home__img, .about__subtitle, .about__text, .skills__img',{delay: 400}); 
 sr.reveal('.home__social-icon',{ interval: 200}); 
